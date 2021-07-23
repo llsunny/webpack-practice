@@ -1,0 +1,20 @@
+{
+  "name": "webpack-practice",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "bundle": "webpack"
+  },
+  "keywords": [],
+  "author": "llsunny",
+  "license": "ISC",
+  "devDependencies": {
+    "file-loader": "^4.2.0",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "@antv/f2": "^3.8.9"
+  }
+}
