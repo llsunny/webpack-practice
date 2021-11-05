@@ -4,5 +4,6 @@
  * @FilePath: \webpack-practice\src\index.js
  * 
  */
-var avtar = require('./CR.png');
-console.log(avtar)
+// import formatUtils from "./utils/formatUtils";
+// console.log(formatUtils.removeElement([0,1,2,2,3,0,4,2],
+// 2))

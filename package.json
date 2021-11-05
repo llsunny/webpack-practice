@@ -3,18 +3,62 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
-    "bundle": "webpack"
+    "dev": "webpack-dev-server --config ./build/webpack.common.js",
+    "build": "webpack --env.production --config ./build/webpack.common.js",
+    "test": "promises-aplus-tests MyPromise.js"
   },
   "keywords": [],
   "author": "llsunny",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-react": "^7.14.5",
+    "autoprefixer": "^9.3.1",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^1.0.0",
+    "css-loader": "^0.28.9",
     "file-loader": "^4.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "imports-loader": "^0.8.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.10.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "postcss-loader": "^3.0.0",
+    "promises-aplus-tests": "^2.1.2",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.20.2",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "ts-loader": "^5.3.2",
+    "typescript": "^3.2.2",
+    "url-loader": "^4.1.1",
     "webpack": "^4.16.5",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^4.1.5"
   },
   "dependencies": {
-    "@antv/f2": "^3.8.9"
-  }
+    "@antv/f2": "^3.8.9",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/runtime": "^7.14.8",
+    "@babel/runtime-corejs2": "^7.14.8",
+    "jquery": "^3.6.0",
+    "lodash": "^4.17.21",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "browserslist": [
+    "defaults",
+    "not ie < 11",
+    "last 2 versions",
+    "> 1%",
+    "iOS 7",
+    "last 3 iOS versions"
+  ]
 }
