@@ -360,5 +360,20 @@ export default {
     }
     console.log(nums);
     return ans;
+  },
+  deepCopy(obj) {
+    let tempTool = Array.isArray(obj) ? [] : {}
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        if (typeof obj[key] === 'object') {
+          tempTool[key] = this.deepCopy(obj[key])
+        } else if (Array.isArray(obj)) {
+          tempTool[key] = Array.prototype.concat(obj[key])
+        } else {
+          tempTool[key] = obj[key]
+        }
+      }
+    }
+    return tempTool
   }
 }

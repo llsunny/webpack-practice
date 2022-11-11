@@ -8,24 +8,28 @@ const path = require('path')
 
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+
 const merge = require('webpack-merge')
 const devConfig = require('./webpack.dev.js')
 const prodConfig = require('./webpack.prod.js')
 
 const makePlugins = (config) => {
   const plugins = [
-    new CleanWebpackPlugin(['dist'], {
-      root: path.resolve(__dirname, '../'),
-    }),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../public'),
+        to: path.resolve(__dirname, '../dist'),
+      },
+    ]),
     new webpack.ProvidePlugin({
       $: 'jquery',
     }),
-  ];
+  ]
   Object.keys(config.entry).forEach((item) => {
     plugins.push(
       new HtmlWebpackPlugin({
-        template: 'src/index.html',
+        template: 'public/index.html',
         filename: `${item}.html`,
         chunks: ['runtime', 'vendors', item],
       })
@@ -35,10 +39,9 @@ const makePlugins = (config) => {
 }
 
 const commonConfig = {
-  stats: { children: false },
   entry: {
     index: './src/index.js',
-    main: './src/main.ts',
+    // main: './src/main.ts',
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -90,10 +93,14 @@ const commonConfig = {
           },
         ],
       },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+        loader: 'file-loader'
+      }
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js', '.vue'],
   },
 }
 commonConfig.plugins = makePlugins(commonConfig)
